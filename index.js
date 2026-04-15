@@ -45,3 +45,31 @@ const bookStore = {
 
 // Write your code here!
 
+// 1. Update Existing Element
+const bookStoreTitle = document.querySelector('#header'); 
+bookStoreTitle.textContent = bookStore.name;
+
+// 2. Create New Elements
+const bookList = document.querySelector('#book-list');
+
+bookStore.books.forEach(book => {
+    const bookContainer = document.createElement('li');
+    const bookTitle = document.createElement('h3');
+    const bookAuthor = document.createElement('p');
+    const bookImage = document.createElement('img');
+
+    bookTitle.textContent = book.title;
+    bookAuthor.textContent = book.author;
+    
+    // FIXED: Changed book.image to book.imageUrl to match the object above
+    bookImage.src = book.imageUrl; 
+
+    bookContainer.append(bookTitle, bookAuthor, bookImage);
+    bookList.append(bookContainer);
+});
+
+// 3. BONUS CHALLENGE
+const elementToDelete = document.querySelector('#delete-this');
+if (elementToDelete) {
+    elementToDelete.remove();
+}
